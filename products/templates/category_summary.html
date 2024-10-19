@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- Header-->
+<header class="bg-dark py-5">
+    <div class="container px-4 px-lg-5 my-5">
+        <div class="text-center text-white">
+            <h1 class="display-4 fw-bolder">Categories</h1>
+            <p class="lead fw-normal text-white-50 mb-0">Choos Your Category Below...</p>
+        </div>
+    </div>
+</header>
+<div class="container">
+    <br/><br/>
+    <div class="row">
+        {% for category in categories %}
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3 text-center mb-4">
+            <a href="{% url 'category' category %}" class="category-link">
+                <!-- Product image -->
+                <div class="square-img-container">
+                    <img class="square-img" src="{{ category.image.url }}" alt="{{ category }}" />
+                </div>
+                <h4 class="category-title">{{ category }}</h4>
+            </a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+<style>
+.category-title {
+    font-size: 14px; /* Adjust the font size as needed */
+    margin-top: 5px; /* Reduce space between image and text */
+    color: black; /* Set the text color to black */
+}
+
+.category-link {
+    text-decoration: none; /* Remove underline from the link */
+    color: black; /* Ensure the link color is black */
+    display: block; /* Ensure the link covers both the image and the text */
+}
+
+.square-img-container {
+    position: relative;
+    width: 100px; /* Adjust the width as needed */
+    height: 100px; /* Adjust the height as needed */
+    margin: 0 auto; /* Center the container */
+}
+
+.square-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensure the image covers the container */
+}
+</style>
+
+
+{% endblock %}
